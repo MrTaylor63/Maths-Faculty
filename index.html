@@ -35,10 +35,10 @@
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
               document.getElementById("content").className="w3-container"
-              document.getElementById("firebase-auth-container").className="w3-hide"
+              document.getElementById("firebaseui-auth-container").className="w3-hide"
           }
         else{
-              document.getElementById("firebase-auth-container").className=""
+              document.getElementById("firebaseui-auth-container").className=""
                 document.getElementById("content").className="w3-hide"
         }
     })
