@@ -40,7 +40,6 @@
         signInSuccessUrl: 'https://mrtaylor63.github.io/',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         // Terms of service url.
@@ -64,7 +63,12 @@
     })
     setTimeout(spintime, 3000);
 		    function spintime(){
+			    var user = firebase.auth().currentUser.uid
+			    if(user){
+			    }
+			    else{
 		  document.getElementById("firebaseui-auth-container").className=""
+			    }
 		    }
 
 </script>
