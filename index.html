@@ -4,6 +4,18 @@
 <title>Mathematics General 2 Completion</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/lib/w3.css">
+<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOc3bSOYeORgRStGcFrXOLn2xPrVcLrLo",
+    authDomain: "student-progress-73efe.firebaseapp.com",
+    databaseURL: "https://student-progress-73efe.firebaseio.com",
+    storageBucket: "student-progress-73efe.appspot.com",
+    messagingSenderId: "973474403103"
+  };
+  firebase.initializeApp(config);
+</script>
 <style>
 input[type="checkbox"] {
     display:flex;
@@ -23,7 +35,7 @@ input[type="checkbox"] {
   <h3>General Mathematics 2 Completion Grid</h3>
   <p class="w3-large">Check the cells as you complete the course.</p>
 </div>
-<button>Submit</button>
+<button onclick="logProgress()">Submit</button>
 <div class="w3-row">
   <div class="w3-col m1 w3-center w3-grey"></div>
   <div class="w3-col m1 w3-center w3-grey"></div>
@@ -116,7 +128,7 @@ input[type="checkbox"] {
 <button id="1f6" class = "w3-btn-block w3-col s1 w3-white" onclick="clicked('1f6')">-</button>
 <button id="1f7" class = "w3-btn-block w3-col s1 w3-white" onclick="clicked('1f7')">-</button>
 </div>
-<div class="w3-row"><button>Submit</button></div>
+<div class="w3-row"><button onclick="logProgress()">Submit</button></div>
 </div>
 
 <div onclick="myFunction('mm3')" class="w3-btn-block w3-left-align">Chapter 2 - MM3 - Further Applications of Area and Volume</div>
@@ -172,10 +184,10 @@ input[type="checkbox"] {
 <button id="2d7" class = "w3-btn-block w3-col s1 w3-white" onclick="clicked('2d7')">-</button>
 </div>
 
-<div class="w3-row"><button>Submit</button></div>
+<div class="w3-row"><button onclick="logProgress()">Submit</button></div>
 </div>
     </div>
-    <button>Submit</button>
+    <button onclick="logProgress()">Submit</button>
 <script>
 function myFunction(id) {
     var x = document.getElementById(id);
