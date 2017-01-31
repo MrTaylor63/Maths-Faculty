@@ -240,7 +240,7 @@ document.getElementById(id).value = 1
 }
 }
 function logProgress(){
-    var user = firebase.auth().currentUser
+    var user = firebase.auth().currentUser.uid
 logs = document.getElementsByTagName("button")
 write={}
 for(var i=0; i<logs.length; i++){
@@ -252,7 +252,7 @@ write[logs[i].id] = logs[i].value
       firebase.database().ref('users/'+user).update(write);
 }
 function loadProgress(){
-        var user = firebase.auth().currentUser
+        var user = firebase.auth().currentUser.uid
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
