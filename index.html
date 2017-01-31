@@ -282,15 +282,14 @@ function loadProgress(){
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
-	if(data!=null){
+	console.log(data)
         for(var i=0; i<logs.length; i++){
             if(logs[i].id!=""){
                 var id = logs[i].id
                 if(data[id]=="1"){
                 document.getElementById(logs[i].id).value = 1
                 document.getElementById(logs[i].id).className= "w3-btn-block w3-col s1 w3-green"
-                }
-	    }
+		}
             }
         }
         });
