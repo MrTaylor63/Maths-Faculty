@@ -214,7 +214,9 @@ function logProgress(){
 logs = document.getElementsByTagName("button")
 write={}
 for(var i=0; i<logs.length; i++){
+    if(logs[i].id!=""){
 write[logs[i].id] = logs[i].value
+    }
 }
       firebase.database().ref('users/admin').set(write);
 
