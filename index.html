@@ -52,12 +52,12 @@
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
               loadProgress()
-              document.getElementById("content").className="w3-container"
-              document.getElementById("firebaseui-auth-container").className="w3-hide"
+              document.getElementById("content").className="w3-container";
+              document.getElementById("firebaseui-auth-container").className="w3-hide";
           }
         else{
-              document.getElementById("firebaseui-auth-container").className=""
-                document.getElementById("content").className="w3-hide"
+              document.getElementById("firebaseui-auth-container").className="";
+                document.getElementById("content").className="w3-hide";
         }
     })
     setTimeout(spintime, 3000);
@@ -67,7 +67,7 @@
 				    console.log("whelp")
 			    }
 			    else{
-		  document.getElementById("firebaseui-auth-container").className=""
+		  document.getElementById("firebaseui-auth-container").className="";
 			    }
 		    }
 
