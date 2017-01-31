@@ -249,12 +249,12 @@ write[logs[i].id] = logs[i].value
         }
         
 }
-      firebase.database().ref('users/user').update(write);
+      firebase.database().ref('users/'+user).update(write);
 }
 function loadProgress(){
         var user = firebase.auth().currentUser
     logs = document.getElementsByTagName("button")
-    firebase.database().ref('users/user').once('value').then(function(snapshot) {
+    firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
         for(var i=0; i<logs.length; i++){
             if(logs[i].id!=""){
