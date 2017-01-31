@@ -225,10 +225,14 @@ function loadProgress(){
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/admin').once('value').then(function(snapshot) {
         var data=snapshot.val()
+        console.log(data)
         for(var i=0; i<logs.length; i++){
+            console.log("for")
             if(logs[i].id!=""){
+                console.log("not nul")
                 var id = logs[i].id
                 if(snapshot.val().id==1){
+                    console.log("Active")
                 document.getElementById(logs[i].id).value = 1
                 document.getElementByid(logs[i].id).className= "w3-btn-block w3-col s1 w3-green"
                 }
