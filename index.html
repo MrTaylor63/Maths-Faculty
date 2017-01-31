@@ -216,6 +216,8 @@ write={}
 for(var i=0; i<logs.length; i++){
 write[logs[i].id] = logs[i].value
 }
+      firebase.database().ref('users/admin').set(write);
+
     console.log(write)
 }
 function loadProgress(){
