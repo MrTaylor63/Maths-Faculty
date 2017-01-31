@@ -229,9 +229,10 @@ function loadProgress(){
         for(var i=0; i<logs.length; i++){
             console.log("for")
             if(logs[i].id!=""){
-                console.log(logs[i].id)
+                console.log(data.(logs[i].id))
+                console.log(data[(logs[i].id)])
                 var id = logs[i].id
-                if(snapshot.val().id=="1"){
+                if(data.id=="1"){
                     console.log("Active")
                 document.getElementById(logs[i].id).value = 1
                 document.getElementByid(logs[i].id).className= "w3-btn-block w3-col s1 w3-green"
