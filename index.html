@@ -215,12 +215,9 @@ logs = document.getElementsByTagName("button")
 write={}
 for(var i=0; i<logs.length; i++){
     if(logs[i].id!=""){
-        if(logs[i].id=="1"){
-write[logs[i].id] = "Complete"
+write[logs[i].id] = logs[i].value
         }
-        else{
-write[logs[i].id] = "Incomplete"
-    }
+        
 }
       firebase.database().ref('users/admin').update(write);
 
