@@ -60,16 +60,7 @@
                 document.getElementById("content").className="w3-hide";
         }
     })
-    setTimeout(spintime, 3000);
-		    function spintime(){
-			    var user = firebase.auth().currentUser.uid
-			    if(user){
-				    console.log("whelp")
-			    }
-			    else{
-		  document.getElementById("firebaseui-auth-container").className="";
-			    }
-		    }
+
 
 </script>
 <style>
@@ -255,6 +246,16 @@ function myFunction(id) {
 </script>
 
 <script>
+	    setTimeout(spintime, 3000);
+		    function spintime(){
+			    var user = firebase.auth().currentUser.uid
+			    if(user){
+				    console.log("whelp")
+			    }
+			    else{
+		  document.getElementById("firebaseui-auth-container").className="";
+			    }
+		    }
 function clicked(id){
 if(document.getElementById(id).className == "w3-btn-block w3-col s1 w3-green"){
 document.getElementById(id).className = "w3-btn-block w3-col s1 w3-white"
