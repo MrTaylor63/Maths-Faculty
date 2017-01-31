@@ -7,6 +7,25 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+        	   <style>
+.loader {
+  border: 8px solid black;
+  border-radius: 50%;
+  border-top: 8px solid white;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 <script>
   // Initialize Firebase
   var config = {
@@ -43,7 +62,11 @@
                 document.getElementById("content").className="w3-hide"
         }
     })
-
+    setTimeout(spintime, 3000);
+		    function spintime(){
+		  document.getElementById("firebaseui-auth-container").className=""
+		    }
+}
 </script>
 <style>
 input[type="checkbox"] {
@@ -59,7 +82,7 @@ input[type="checkbox"] {
 </style>
     </head>
 <body>
-<div id="firebaseui-auth-container"></div>
+<div id="firebaseui-auth-container" class="loader"></div>
 <div id = "content" class="w3-hide">
   <h3>General Mathematics 2 Completion Grid</h3>
   <p class="w3-large">Check the cells as you complete the course.</p>
