@@ -34,6 +34,7 @@
       ui.start('#firebaseui-auth-container', uiConfig);
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
+              loadProgress()
               document.getElementById("content").className="w3-container"
               document.getElementById("firebaseui-auth-container").className="w3-hide"
           }
@@ -57,7 +58,7 @@ input[type="checkbox"] {
 }
 </style>
     </head>
-<body onLoad="loadProgress()">
+<body>
 <div id="firebaseui-auth-container"></div>
 <div id = "content" class="w3-container">
   <h3>General Mathematics 2 Completion Grid</h3>
@@ -239,6 +240,7 @@ document.getElementById(id).value = 1
 }
 }
 function logProgress(){
+    var user = firebase.auth().currentUser
 logs = document.getElementsByTagName("button")
 write={}
 for(var i=0; i<logs.length; i++){
@@ -247,11 +249,12 @@ write[logs[i].id] = logs[i].value
         }
         
 }
-      firebase.database().ref('users/admin').update(write);
+      firebase.database().ref('users/user').update(write);
 }
 function loadProgress(){
+        var user = firebase.auth().currentUser
     logs = document.getElementsByTagName("button")
-    firebase.database().ref('users/admin').once('value').then(function(snapshot) {
+    firebase.database().ref('users/user').once('value').then(function(snapshot) {
         var data=snapshot.val()
         for(var i=0; i<logs.length; i++){
             if(logs[i].id!=""){
