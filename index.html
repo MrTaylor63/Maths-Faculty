@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<title>Mathematics General 2 Completion</title>
+<title>Mathematics General 2 Completion Grid</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
@@ -15,6 +15,32 @@
     messagingSenderId: "973474403103"
   };
   firebase.initializeApp(config);
+          var uiConfig = {
+        signInSuccessUrl: 'https://mrtaylor63.github.io/',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              document.getElementById("content").className="w3-container"
+              document.getElementById("firebase-auth-container").className="w3-hide"
+          }
+        else{
+              document.getElementById("firebase-auth-container").className=""
+                document.getElementById("content").className="w3-hide"
+        }
+    }
+
 </script>
 <style>
 input[type="checkbox"] {
@@ -30,8 +56,8 @@ input[type="checkbox"] {
 </style>
     </head>
 <body onLoad="loadProgress()">
-
-<div class="w3-container">
+<div id="firebaseui-auth-container"></div>
+<div id = "content" class="w3-container">
   <h3>General Mathematics 2 Completion Grid</h3>
   <p class="w3-large">Check the cells as you complete the course.</p>
 </div>
