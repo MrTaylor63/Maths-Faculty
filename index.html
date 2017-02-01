@@ -50,6 +50,9 @@
       // The start method will wait until the DOM is loaded.
       ui.start('#firebaseui-auth-container', uiConfig);
     firebase.auth().onAuthStateChanged(function(user) {
+	    if(user.uid==="aVQjpSXNXMXJCD0pM6a2uIWcCJv2" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
+		    document.getElementById('chooserStudent').className=""
+	    }
           if (user) {
 		  var user = firebase.auth().currentUser
     	firebase.database().ref('accounts/'+user.uid).update( {
@@ -87,6 +90,7 @@ input[type="checkbox"] {
 <div id = "content" class="w3-hide">
   <h3>General Mathematics 2 Completion Grid</h3>
   <p class="w3-large">Check the cells as you complete the course.</p>
+	<select id="chooserStudent" class = "w3-hide"></select>
 <button onclick="logProgress()">Submit</button>
 <div class="w3-row">
   <div class="w3-col m1 w3-center w3-grey"></div>
