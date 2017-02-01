@@ -51,6 +51,7 @@
       ui.start('#firebaseui-auth-container', uiConfig);
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="aVQjpSXNXMXJCD0pM6a2uIWcCJv2" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
+		    console.log(user.uid)
 		    document.getElementById('chooserStudent').className=""
 	    }
           if (user) {
