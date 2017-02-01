@@ -51,6 +51,12 @@
       ui.start('#firebaseui-auth-container', uiConfig);
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
+		  var user = firebase.auth().currentUser
+    	firebase.database().ref('accounts/'+user.uid).update( {
+		name: user.displayName,
+		uid: user.uid,
+		email: user.email
+	}
               loadProgress()
               document.getElementById("content").className="w3-container";
               document.getElementById("firebaseui-auth-container").className="w3-hide";
