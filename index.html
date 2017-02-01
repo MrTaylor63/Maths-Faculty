@@ -52,6 +52,7 @@
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="aVQjpSXNXMXJCD0pM6a2uIWcCJv2" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
 		    console.log(user.uid)
+		    popUsers()
 		    document.getElementById('chooserStudent').className=""
 	    }
           if (user) {
@@ -71,7 +72,28 @@
         }
     })
 
-
+function popUsers(){
+               var list = document.getElementById('chooserStudent');
+               removeOptions(list);
+               var users = [["Choose a student",-1]]
+               return firebase.database().ref('accounts').once('value').then(function(snapshot) {
+                  snapshot.forEach(function(childSnapshot) {
+                     var data = childSnapshot;
+                     users.push([data.val().name,data.val().uid])
+                     });
+        users.sort(function(a, b) { 
+                  return a[0] > b[0] ? 1 : -1;
+               });
+               var df = document.createDocumentFragment();
+               for (var i = 0; i<users.length; i++){
+                  var option = document.createElement('option');
+                     option.value = users[i][1];
+                     option.appendChild(document.createTextNode(users[i][0]));
+                     df.appendChild(option);
+               }
+               list.appendChild(df)
+                  });
+            }
 </script>
 <style>
 input[type="checkbox"] {
@@ -91,7 +113,7 @@ input[type="checkbox"] {
 <div id = "content" class="w3-hide">
   <h3>General Mathematics 2 Completion Grid</h3>
   <p class="w3-large">Check the cells as you complete the course.</p>
-	<select id="chooserStudent" class = "w3-hide"></select>
+	<select id="chooserStudent" class = "w3-hide" onChange="adminLoadProgress()"></select>
 <button onclick="logProgress()">Submit</button>
 <div class="w3-row">
   <div class="w3-col m1 w3-center w3-grey"></div>
@@ -1458,6 +1480,23 @@ write[logs[i].id] = logs[i].value
 }
 function loadProgress(){
         var user = firebase.auth().currentUser.uid
+    logs = document.getElementsByTagName("button")
+    firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
+        var data=snapshot.val()
+	console.log(data)
+        for(var i=0; i<logs.length; i++){
+            if(logs[i].id!=""){
+                var id = logs[i].id
+                if(data[id]=="1"){
+                document.getElementById(logs[i].id).value = 1
+                document.getElementById(logs[i].id).className= "w3-btn-block w3-col s1 w3-green"
+		}
+            }
+        }
+        });
+}
+	function adminLoadProgress(){
+        var user = document.getElementById("chooserStudent").value
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
