@@ -71,7 +71,14 @@
                 document.getElementById("content").className="w3-hide";
         }
     })
-
+function removeOptions(selectbox)
+               {
+                   var i;
+                   for(i = selectbox.options.length - 1 ; i >= 0 ; i--)
+                   {
+               	selectbox.remove(i);
+                   }
+               }
 function popUsers(){
                var list = document.getElementById('chooserStudent');
                removeOptions(list);
