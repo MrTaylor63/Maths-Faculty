@@ -59,6 +59,7 @@
 		    document.getElementById('chooserStudent').className=""
 	    }
           if (user) {
+		                document.getElementById("firebaseui-auth-container").className="w3-hide";
 		  var user = firebase.auth().currentUser
     	firebase.database().ref('accounts/'+user.uid).update( {
 		name: user.displayName,
@@ -67,7 +68,6 @@
 	})
               loadProgress()
               document.getElementById("content").className="w3-container";
-              document.getElementById("firebaseui-auth-container").className="w3-hide";
           }
         else{
               document.getElementById("firebaseui-auth-container").className="";
