@@ -51,7 +51,6 @@
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="kXOIlNiyzIVwwYvMV2o1IYNAPZy1" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
 		    console.log(user.uid)
@@ -1463,7 +1462,8 @@ function myFunction(id) {
 				    console.log("whelp")
 			    }
 			    else{
-		  document.getElementById("firebaseui-auth-container").className="";
+				    		  document.getElementById("firebaseui-auth-container").className="";
+				          ui.start('#firebaseui-auth-container', uiConfig);
 			    }
 		    }
 function clicked(id){
