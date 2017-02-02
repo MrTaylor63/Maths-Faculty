@@ -53,7 +53,6 @@
       // The start method will wait until the DOM is loaded.
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="kXOIlNiyzIVwwYvMV2o1IYNAPZy1" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
-		    console.log(user.uid)
 		    popUsers()
 		    document.getElementById('chooserStudent').className=""
 	    }
@@ -1459,7 +1458,6 @@ function myFunction(id) {
 		    function spintime(){
 			    var user = firebase.auth().currentUser
 			    if(user){
-				    console.log("whelp")
 			    }
 			    else{
 				    		  document.getElementById("firebaseui-auth-container").className="";
@@ -1493,7 +1491,6 @@ function loadProgress(){
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
-	console.log(data)
         for(var i=0; i<logs.length; i++){
             if(logs[i].id!=""){
                 var id = logs[i].id
@@ -1510,7 +1507,6 @@ function loadProgress(){
     logs = document.getElementsByTagName("button")
     firebase.database().ref('users/'+user).once('value').then(function(snapshot) {
         var data=snapshot.val()
-	console.log(data)
         for(var i=0; i<logs.length; i++){
             if(logs[i].id!=""){
                 var id = logs[i].id
