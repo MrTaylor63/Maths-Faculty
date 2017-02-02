@@ -37,19 +37,7 @@
     storageBucket: "student-progress-73efe.appspot.com",
     messagingSenderId: "973474403103"
   };
-  firebase.initializeApp(config);
-      var uiConfig = {
-        signInSuccessUrl: 'http://MrTaylor63.github.io',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
-      };
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
+  
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="kXOIlNiyzIVwwYvMV2o1IYNAPZy1" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
 		    popUsers()
@@ -1453,13 +1441,26 @@ function myFunction(id) {
 </script>
 
 <script>
-	    setTimeout(spintime, 3000);
+	    setTimeout(spintime, 1500);
 		    function spintime(){
 			    var user = firebase.auth().currentUser
 			    if(user){
 			    }
 			    else{
-				    		  document.getElementById("firebaseui-auth-container").className="";
+				    firebase.initializeApp(config);
+      var uiConfig = {
+        signInSuccessUrl: 'http://MrTaylor63.github.io',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+				    	document.getElementById("firebaseui-auth-container").className="";
 				          ui.start('#firebaseui-auth-container', uiConfig);
 			    }
 		    }
