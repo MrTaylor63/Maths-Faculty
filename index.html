@@ -37,6 +37,8 @@
     storageBucket: "student-progress-73efe.appspot.com",
     messagingSenderId: "973474403103"
   };
+firebase.initializeApp(config);
+
   
     firebase.auth().onAuthStateChanged(function(user) {
 	    if(user.uid==="kXOIlNiyzIVwwYvMV2o1IYNAPZy1" || user.uid==="jmTSkDdHKhTW6NLlOfXpVfb6nmp1"){
@@ -1447,7 +1449,6 @@ function myFunction(id) {
 			    if(user){
 			    }
 			    else{
-				    firebase.initializeApp(config);
       var uiConfig = {
         signInSuccessUrl: 'http://MrTaylor63.github.io',
         signInOptions: [
